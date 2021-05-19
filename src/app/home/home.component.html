@@ -1,0 +1,37 @@
+<div class = "container" style="margin-top: 70px">
+    <table class = "table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let data of sampledata">
+
+                <td>{{data.ID}}</td>
+                <td>{{data.Name}}</td>
+
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div>
+        <form>
+            <div class = "form-group">
+                <label for= "id">ID</label>
+                <input [(ngModel)] = "inputdata.ID" type = "text" name = "id" class="form-control" id="id" >
+            
+                <label for= "name">Name</label>
+                <input [(ngModel)] = "inputdata.Name" type = "text" name = "name" class="form-control" id="id" >
+
+            </div>
+        </form>
+        <button class="btn btn-primary" (click)="addUser()">Add user</button>
+
+    </div>
+
+
+
+</div>

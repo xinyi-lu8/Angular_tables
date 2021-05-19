@@ -1,0 +1,19 @@
+<div class = "container" style="margin-top: 70px">
+    <table class = "table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let data of joineddata">
+
+                <td>{{data.ID}}</td>
+                <td>{{data.Name}}</td>
+
+            </tr>
+        </tbody>
+
+    </table>
+</div>
