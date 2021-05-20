@@ -64,21 +64,21 @@ export class DataprocessService {
      
   }
 
-  join(joineddata: Array<sampledata>): Promise<sampledata[]>{
+  join(): Promise<sampledata[]>{
     return new Promise((resolve, reject) => {
         this.db.transaction(function(tx: any){
           //string
-          var sqlstatement = "SELECT table1.ID, table1.Name, table2.ID, table2.Name FROM table2 FULL OUTER JOIN table1";
+          var sqlstatement = "SELECT table1.ID, table1.Name, table2.Name as FoodName FROM table1 LEFT JOIN table2 on table1.ID = table2.ID";
 
           var res: any[] = [];
     
           tx.executeSql(sqlstatement, [], (tx:string, results: any) => {
-            var len = results.length;
+            var len = results.rows.length;
             var i;
     
             for(i = 0; i < len; i++){
               var row = results.rows.item(i);
-              res.push({ID: row['ID'], Name: row['Name']});
+              res.push({ID: row['ID'], Name: row['Name'], FoodName: row['FoodName']});
             }
             resolve(res);
           }), (tx: string, results: any) => {
